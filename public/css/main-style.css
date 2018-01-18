@@ -1,0 +1,313 @@
+
+   
+.job_seeker_one h1 {
+    color: #333;
+    font-family: roboto-r;
+    font-size: 27px;
+    font-weight: normal;
+    line-height: 32px;
+    text-align: left;
+    text-transform: uppercase;
+}
+.job_seeker_one p {
+    color: #393939;
+    font-family: roboto-r;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 23px;
+    margin-bottom: 15px;
+    text-align: justify;
+    text-transform: none;
+}
+.job_seeker_two {
+    float: right;
+    margin: 60px 0;
+    width: 50%;
+}
+.vm-one p a {
+    color: #50c9d4;
+}
+.vm-one p a:hover {
+    color: #000;
+}
+.index_page_footer {
+    bottom: 0;
+    float: left;
+    margin: 0;
+    position: absolute;
+    width: 100%;
+}
+.index_page {
+    overflow: hidden;
+}
+.fill {
+    float: left;
+    height: 100% !important;
+    overflow: hidden;
+    width: 100%;
+}
+.fill img {
+    background-size: cover !important;
+    height: 100% !important;
+    overflow-y: hidden;
+    width: 100%;
+}
+.story_image {
+    float: left;
+    height: auto;
+    width: 30%;
+}
+.story_content {
+    float: right;
+    height: auto;
+    width: 65%;
+}
+.clear {
+    clear: both;
+}
+.client-banner {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-image: url("../images/client-banner.html");
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-color: -moz-use-text-color -moz-use-text-color #00b7dd;
+    border-image: none;
+    border-style: none none solid;
+    border-width: medium medium 5px;
+    height: 400px;
+}
+.client-banner h1 {
+    color: #fff;
+    font-family: roboto-b;
+    font-size: 45px;
+    font-weight: normal;
+    line-height: 50px;
+    padding-top: 75px;
+    text-align: left;
+    text-transform: uppercase;
+}
+.team-banner {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-image: url("../images/team-banner.html");
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-color: -moz-use-text-color -moz-use-text-color #00b7dd;
+    border-image: none;
+    border-style: none none solid;
+    border-width: medium medium 5px;
+    height: 400px;
+}
+.team-banner h1 {
+    color: #000;
+    font-family: roboto-b;
+    font-size: 45px;
+    font-weight: normal;
+    line-height: 50px;
+    padding-top: 75px;
+    text-align: left;
+    text-transform: uppercase;
+}
+.job-banner {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-image: url("../images/job-banner.html");
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-color: -moz-use-text-color -moz-use-text-color #00b7dd;
+    border-image: none;
+    border-style: none none solid;
+    border-width: medium medium 5px;
+    height: 400px;
+}
+.job-banner h1 {
+    color: #000;
+    font-family: roboto-b;
+    font-size: 45px;
+    font-weight: normal;
+    line-height: 50px;
+    padding-top: 75px;
+    text-align: left;
+    text-transform: uppercase;
+}
+.y-banner {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-image: url("../images/y-banner.html");
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-color: -moz-use-text-color -moz-use-text-color #00b7dd;
+    border-image: none;
+    border-style: none none solid;
+    border-width: medium medium 5px;
+    height: 400px;
+}
+.y-banner h1 {
+    color: #000;
+    font-family: roboto-b;
+    font-size: 45px;
+    font-weight: normal;
+    line-height: 50px;
+    padding-top: 75px;
+    text-align: left;
+    text-transform: uppercase;
+}
+.contact-banner {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-image: url("../images/contact-banner.html");
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-color: -moz-use-text-color -moz-use-text-color #00b7dd;
+    border-image: none;
+    border-style: none none solid;
+    border-width: medium medium 5px;
+    height: 400px;
+}
+.contact-banner h1 {
+    color: #000;
+    font-family: roboto-b;
+    font-size: 45px;
+    font-weight: normal;
+    line-height: 50px;
+    padding-top: 130px;
+    text-align: left;
+    text-transform: uppercase;
+}
+.expand_container {
+    float: left;
+    width: 100%;
+}
+.expand_container div {
+    float: left;
+    width: 100%;
+}
+.expand_container .expand_header {
+  background-color: #00adef;
+  border-radius: 11px;
+  color: #fff;
+  cursor: pointer;
+  float: right;
+  font-weight: bold;
+  margin: 0 10px 10px 0;
+  padding: 10px 0;
+  text-align: center;
+  width: 20%;
+}
+.expand_container .expand_header:hover {
+ background:#286090;
+}
+.expand_container .expand_header2 {
+    background-color: #00b7dd;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 15px 10px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.with-us-boxx:hover .expand_container .expand_header2 {
+    background: #555555 none repeat scroll 0 0;
+}
+.with-us-boxx img {
+    background: #00b7dd none repeat scroll 0 0;
+    border-radius: 50%;
+    margin-top: -100px;
+    text-align: center;
+}
+.with-us-boxx:hover img {
+    background: #555555 none repeat scroll 0 0;
+}
+.expand_container .expand_content {
+    display: none;
+    padding: 5px;
+}
+.expand_content ul {
+    float: left;
+    width: 100%;
+}
+.height_seperator {
+    float: left;
+    height: auto;
+    margin-top: 20px;
+    width: 100%;
+}
+.expand_container ul {
+    float: left;
+    width: 97%;
+}
+.about-one img, .about-two img {
+    background: #ededed none repeat scroll 0 0;
+    margin: 10px 0;
+    padding: 5px;
+    text-align: left;
+}
+.vm-one-line img {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    margin: 0;
+    padding: 0;
+}
+.about-two p {
+    color: #393939;
+    font-family: roboto-r;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 23px;
+    margin-bottom: 15px;
+    text-align: justify;
+    text-transform: none;
+}
+.div_image1 {
+    float: left;
+    height: auto;
+    text-align: center;
+    width: 100%;
+}
+.dp-box .div_image1 div {
+    background: rgba(0, 0, 0, 0) url("../images/dp-01.html") no-repeat scroll 0 0;
+    height: 150px;
+    width: 150px;
+}
+.dp-box:hover .div_image1 div {
+    background: rgba(0, 0, 0, 0) url("../images/dp-01-h.html") no-repeat scroll 0 0;
+}
+.dp-box .div_image2 div {
+    background: rgba(0, 0, 0, 0) url("../images/dp-02.html") no-repeat scroll 0 0;
+    height: 150px;
+    width: 150px;
+}
+.dp-box:hover .div_image2 div {
+    background: rgba(0, 0, 0, 0) url("../images/dp-02-h.html") no-repeat scroll 0 0;
+}
+.dp-box .div_image3 div {
+    background: rgba(0, 0, 0, 0) url("../images/dp-03.html") no-repeat scroll 0 0;
+    height: 150px;
+    width: 150px;
+}
+.dp-box:hover .div_image3 div {
+    background: rgba(0, 0, 0, 0) url("../images/dp-03-h.html") no-repeat scroll 0 0;
+}
+.dp-box .div_image4 div {
+    background: rgba(0, 0, 0, 0) url("../images/dp-04.html") no-repeat scroll 0 0;
+    height: 150px;
+    width: 150px;
+}
+.dp-box:hover .div_image4 div {
+    background: rgba(0, 0, 0, 0) url("../images/dp-04-h.html") no-repeat scroll 0 0;
+}
