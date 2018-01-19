@@ -73,9 +73,6 @@
 					   <p class="count-text ">جهة حكومية</p>
 					</div>
 					<div class="counter">
-					  <p class="count-text ">تعاون مع<br/> أغلب الجامعات</p>
-					</div>
-					<div class="counter">
 					  <h3 class="timer count-title count-number" data-to="9000" data-speed="3000"></h3>
 					   <p class="count-text ">شاب مشارك</p>
 					</div>
