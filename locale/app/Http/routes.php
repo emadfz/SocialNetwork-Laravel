@@ -3,12 +3,13 @@
  
     Route::group(['middleware'=>'auth'], function() {
         Route::get( '/logout',	  [ 'as' => 'frontend.logout.get',  'uses' => 'UserController@getLogout']);
-        Route::get( '/home'   , [ 'as' => 'frontend.home2.get'   , 'uses' => 'PageController@getHome2'   ]);
         Route::get( '/add-post'   , [ 'as' => 'frontend.addpost.get'   , 'uses' => 'PostController@addPost'   ]);
         Route::post( '/add-post'   , [ 'as' => 'frontend.addpost.post'   , 'uses' => 'PostController@create']);
-        Route::get( '/map'   , [ 'as' => 'frontend.map.get'   , 'uses' => 'PostController@getMap'   ]);
-        
+
     });
+Route::get( '/home'   , [ 'as' => 'frontend.home2.get'   , 'uses' => 'PageController@getHome2'   ]);
+Route::get( '/search'   , [ 'as' => 'frontend.search.get'   , 'uses' => 'PageController@search'   ]);
+Route::get( '/map'   , [ 'as' => 'frontend.map.get'   , 'uses' => 'PostController@getMap'   ]);
 
 
     Route::get( '/login',	  [ 'as' => 'frontend.login.get', 	 'uses' => 'Auth\AuthController@getLogin']);

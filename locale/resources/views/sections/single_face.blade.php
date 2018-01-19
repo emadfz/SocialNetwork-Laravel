@@ -290,6 +290,6 @@
         </div>
         </div>
     </section>
-@include('partials.question')
+@include('partials.cities')
 
     @stop

@@ -110,14 +110,16 @@
 							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<div class="form-group label-floating">
 									<label class="control-label">عنوان القيمة</label>
-									<input class="form-control" type="text" placeholder="" name="title">
+									<input class="form-control" type="text" placeholder="" name="title" required>
 								</div>
 							</div>
 					
 							<div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
 								<div class="form-group label-floating is-select">
 									<label class="control-label">اختر القيمة</label>
-									<select class="selectpicker form-control" name="value">
+									<select class="selectpicker form-control" name="value" required>
+										<option disabled selected value> -- اختر القيمة -- </option>
+
 										<option value="الأمانة">الأمانة</option>
 										<option value="الصدق">الصدق</option>
 										<option value="الفضل">الفضل</option>
@@ -129,27 +131,29 @@
 							<div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
 								<div class="form-group label-floating is-select">
 									<label class="control-label">نوع المادة</label>
-									<select class="selectpicker form-control" name="post_type">
-										<option value="video">مسموع</option>
-										<option value="text">مقروء</option>
-										<option value="image">مرئي</option>
+									<select class="selectpicker form-control" name="post_type" required>
+										<option disabled selected value> -- اختر نوع المادة -- </option>
+										<option value="مسموع">مسموع</option>
+										<option value="مقروء">مقروء</option>
+										<option value="مرئي">مرئي</option>
  									</select>
 								</div>
 							</div>
 							<div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
 								<div class="form-group label-floating is-select">
 									<label class="control-label">المدينة</label>
-									<select class="selectpicker form-control" name="location">
-										<option value="24.774265,46.738586">الرياض</option>
-										<option value="21.2854,39.2376">جدة</option>										
-										<option value="26.399250,49.984360">الدمام</option>
-										<option value="21.422510,39.826168">مكة</option>
-										<option value="21.437273,40.512714">الطائف</option>
-										<option value="24.186848,38.026428">ينبع</option>
-										<option value="26.094088,43.973454">عنيزة</option>
-										<option value="30.983334,41.016666">عرعر</option>
-										<option value="28.446959,45.948944">حفر الباطن</option>
-										<option value="24.507143,44.408798">الدوادمى</option>
+									<select class="selectpicker form-control" name="location" required>
+										<option disabled selected value> -- اختر مدينة -- </option>
+										<option value="24.774265,46.738586,الرياض">الرياض</option>
+										<option value="21.2854,39.2376,جدة">جدة</option>
+										<option value="26.399250,49.984360,الدمام">الدمام</option>
+										<option value="21.422510,39.826168,مكة">مكة</option>
+										<option value="21.437273,40.512714,الطائف">الطائف</option>
+										<option value="24.186848,38.026428,ينبع">ينبع</option>
+										<option value="26.094088,43.973454,عنيزة">عنيزة</option>
+										<option value="30.983334,41.016666,عرعر">عرعر</option>
+										<option value="28.446959,45.948944,حفر الباطن">حفر الباطن</option>
+										<option value="24.507143,44.408798,الدوادمى">الدوادمى</option>
 						 
  									</select>
 								</div>
@@ -167,13 +171,19 @@
 									<input type="file" name="file" class="form-control" style="padding-top: 50px;">
 								</div>
 							</div>
+							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="form-group label-floating">
+									<label class="control-label">الصورة الرمزية</label>
+									<input type="file" name="thumbnail" class="form-control" style="padding-top: 50px;">
+								</div>
+							</div>
 					
 							<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
 								<a href="#" class="btn btn-secondary btn-lg full-width">الغاء الموضوع</a>
 							</div>
 					
 							<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
-								<input  type="submit" value"اضف موضوع" class="btn btn-blue btn-lg full-width">
+								<input  class="btn btn-blue btn-lg full-width"  value="اضف موضوع"  type="submit" >
 							</div>
 						</div>
 					</form>

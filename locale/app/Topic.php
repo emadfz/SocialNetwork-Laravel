@@ -8,7 +8,7 @@ class Topic extends Model
 {
     protected $table = "topic";
     protected $fillable = [
-        'title', 'content', 'media_url','media_type','post_type','status', "lat", "long", "value", "user_id"
+        'title', 'content', 'media_url','media_type','post_type','status', "lat", "long", "value", "user_id", "city", "thumbnail"
     ];
 
     public function user()

@@ -30,7 +30,7 @@ class UserController extends Controller
             return redirect()->route('frontend.home2.get');
        }
        else{
-        return "error";
+           return redirect()->back()->with('error', 'error')->with('message', 'شكرا للتسجيل');
        }
     }
     public function getLogout()

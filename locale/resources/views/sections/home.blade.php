@@ -116,6 +116,12 @@
           {!! csrf_field() !!}
             <div class="row">
               <div class="col-xl-12 col-lg-12 col-md-12">
+                  @if(session()->has('error'))
+                      <div class="alert alert-danger" role="alert">
+                          كلمة المرور غير صحيحة
+                      </div>
+                  @endif
+
                 <div class="form-group label-floating is-empty">
                   <label class="control-label">البريد الألكتروني</label>
                   <input class="form-control" placeholder="" type="email" name="email">

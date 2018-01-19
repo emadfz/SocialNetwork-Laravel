@@ -121,7 +121,7 @@
 					content: contentString{{$key}}
 				});
 				var marker{{$key}} = new google.maps.Marker({
-					position: {lat: {{$topic->lat}}, lng: {{$topic->long}} },
+					position: {lat: {{$topic->lat}}+Math.random()*0.1, lng: {{$topic->long}}+Math.random()*0.1 },
 					map: map,
 					icon: {
 						url: "{{asset('public')}}/img/map-marker.png",
@@ -151,8 +151,23 @@
 	<div class="photo-album-item-wrap col-4-width" id="article{{$key}}">
 				<div class="photo-album-item" data-mh="album-item">
 					<div class="photo-item">
-						<imgsrc="{{asset('public')}}/img/photo-item2.jpg" alt="photo">
-						<div class="overlay overlay-dark"></div>
+						@if($topic->media_type == "jpg")
+ 								<img src=" {{asset('public').'/images/'.$topic->media_url}}" alt="photo">
+ 						@elseif($topic->thumbnail != Null)
+ 								<img src=" {{asset('public').'/images/'.$topic->thumbnail}}" alt="photo">
+
+						@elseif($topic->post_type == "مقروء")
+
+ 								<img src="{{asset('public')}}/img/Content.png" alt="photo">
+ 						@elseif($topic->post_type == "مسموع")
+
+ 								<img src="{{asset('public')}}/img/Volume.png" alt="photo">
+
+						@else
+
+ 								<img src="{{asset('public')}}/img/Media.png" alt="photo">
+ 						@endif
+ 						<div class="overlay overlay-dark"></div>
 						<a href="#" class="more"><svg class="olymp-three-dots-icon"><use xlink:href="{{asset('public')}}/svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></a>
 						<a href="#" class="post-add-icon">
 							<svg class="olymp-heart-icon"><use xlink:href="{{asset('public')}}/svg-icons/sprites/icons.svg#olymp-heart-icon"></use></svg>
