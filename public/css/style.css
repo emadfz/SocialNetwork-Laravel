@@ -200,7 +200,19 @@ input[type="submit"] {
 #site-header .page-title a, #site-header .network a {
     color: white;
 }
-
+.blog-post .post-thumb{
+    Max-height:280px;
+}
+.checkbox .checkbox-material .check:before{
+    left: 0;
+    top: 2px;
+}
+.checkbox .checkbox-material{
+    padding-left: 5px;
+}
+.header--standard{
+        padding: 15px 55px;
+}
 /* Responive Header */
 
 @media only screen 

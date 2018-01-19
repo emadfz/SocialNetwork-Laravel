@@ -116,7 +116,7 @@ display:block;
 			<div class="form-group with-button">
 				<input class="form-control js-user-search" placeholder="ماذا يجول فى خاطرك؟" type="text">
 				<button>
-					<svg class="olymp-magnifying-glass-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-magnifying-glass-icon"></use></svg>
+					<svg class="olymp-magnifying-glass-icon"><use xlink:href="{{asset('public')}}/svg-icons/sprites/icons.svg#olymp-magnifying-glass-icon"></use></svg>
 				</button>
 			</div>
 		</form>
@@ -140,13 +140,13 @@ display:block;
 							<ul class="account-settings">
 								<li>
 									<a href="05-Account-Password.html">
-<svg class="olymp-menu-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-menu-icon"></use></svg>
+<svg class="olymp-menu-icon"><use xlink:href="{{asset('public')}}/svg-icons/sprites/icons.svg#olymp-menu-icon"></use></svg>
 										<span>ضبط الحساب</span>
 									</a>
 								</li>
 								<li>
 									<a href="{{route('frontend.logout.get')}}">
-										<svg class="olymp-logout-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-logout-icon"></use></svg>
+										<svg class="olymp-logout-icon"><use xlink:href="{{asset('public')}}/svg-icons/sprites/icons.svg#olymp-logout-icon"></use></svg>
 
 										<span>خروج</span>
 									</a>
@@ -180,7 +180,7 @@ display:block;
 				</div>
 				<a href="03-ProfilePage.html" class="author-name fn">
 					<div class="author-title">
-						{{Auth::user()->name}} <svg class="olymp-dropdown-arrow-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
+						{{Auth::user()->name}} <svg class="olymp-dropdown-arrow-icon"><use xlink:href="{{asset('public')}}/svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
 					</div>
 				</a>
 			</div>

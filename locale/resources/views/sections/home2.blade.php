@@ -51,7 +51,7 @@
 						<div class="form-group with-button">
 							<input class="form-control" type="text" placeholder="البحث باسم المعزّز ...">
 							<button>
-								<svg class="olymp-magnifying-glass-icon"><use xlink:href="svg-icons/sprites/icons.svg#olymp-magnifying-glass-icon"></use></svg>
+								<svg class="olymp-magnifying-glass-icon"><use xlink:href="{{asset('public')}}/svg-icons/sprites/icons.svg#olymp-magnifying-glass-icon"></use></svg>
 							</button>
 						</div>
 					</form>
