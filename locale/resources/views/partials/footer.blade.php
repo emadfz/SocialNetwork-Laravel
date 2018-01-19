@@ -82,7 +82,7 @@
 				
 				<!-- SUB Footer -->
 				
-				<div class="sub-footer-copyright">
+				<div class="sub-footer-social">
 					<a class="socialFooter" href="#"><span>Facebook</span></a>
 					<a class="socialFooter" href="#"><span>Twitter</span></a>
 					<a class="socialFooter" href="#"><span>Google+</span></a>
