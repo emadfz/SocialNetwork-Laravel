@@ -1,647 +1,128 @@
 @extends('admin::layouts.master')
 
 @section('styles')
-<link href="{{ asset('public/assets/admin/global/plugins/jquery-nestable/jquery.nestable.css') }}" rel="stylesheet" type="text/css" />
+   <link href="{{ asset('public/assets/admin/global/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css') }}"
+         rel="stylesheet" type="text/css"/>
 
+   <link rel="stylesheet" type="text/css"
+         href="{{ asset('public/assets/admin/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css') }}"/>
+
+   <link href="{{ asset('public/assets/admin/global/plugins/dropzone/dropzone.min.css') }}" rel="stylesheet"
+         type="text/css"/>
+   <link href="{{ asset('public/assets/admin/global/plugins/dropzone/basic.min.css') }}" rel="stylesheet"
+         type="text/css"/>
 @stop
 
 @section('content')
 
-        <div class="row">
-            <div class="col-md-12">
-                <!-- BEGIN EXAMPLE TABLE PORTLET-->
-                <div class="portlet light bordered">
-                    <div class="portlet-title">
-                        <div class="caption font-dark">
-                            <i class="icon-settings font-dark"></i>
-                            <span class="caption-subject bold uppercase">Add New Menu</span>
-                        </div> 
-                    </div>
-                    <!-- BEGIN PAGE BASE CONTENT -->
+   <div class="row">
+      <div class="col-md-12">
+          <form action="{{route('admin.topic-edit.post')}}" method="post" enctype="multipart/form-data">
+              {{ csrf_field() }}
+              <input type="hidden" name="topic_id" value="{{$topic->id}}">
+              <div class="row">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <div class="form-group label-floating">
+                          <label class="control-label">عنوان القيمة</label>
+                          <input class="form-control" type="text" placeholder="" name="title" value="{{$topic->title}}" required>
+                      </div>
+                  </div>
 
-                    <form  class="form-horizontal" method="post" enctype="multipart/form-data" action="{{ route('admin.permissions.add.post', \Request::get('post_type')) }}">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-               
-                        <div class="row">
-                            <div class="col-md-4">
-                                
+                  <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                      <div class="form-group label-floating is-select">
+                          <label class="control-label">اختر القيمة</label>
+                          <select class="selectpicker form-control" name="value" required>
+                              <option disabled selected value> -- اختر القيمة -- </option>
 
-                               
-                               <div class="portlet-body">
-                                  <div class="panel-group accordion menu" id="accordion3">
-                                     <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                           <h4 class="panel-title">
-                                              <a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion3" href="#pages" aria-expanded="false"> Pages </a>
-                                           </h4>
-                                        </div>
-                                        <div id="pages" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
-                                           <div class="panel-body">
+                              <option value="الأمانة" @if($topic->value == "الأمانة") selected @endif>الأمانة</option>
+                              <option value="الصدق" @if($topic->value == "الصدق") selected @endif>الصدق</option>
+                              <option value="الفضل" @if($topic->value == "الفضل") selected @endif>الفضل</option>
+                              <option value="العدل" @if($topic->value == "العدل") selected @endif>العدل</option>
+                              <option value="القناعة"  @if($topic->value == "القناعة") selected @endif>القناعة</option>
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                      <div class="form-group label-floating is-select">
+                          <label class="control-label">نوع المادة</label>
+                          <select class="selectpicker form-control" name="post_type" required>
+                              <option disabled selected value> -- اختر نوع المادة -- </option>
+                              <option value="مسموع" @if($topic->post_type == "مسموع") selected @endif>مسموع</option>
+                              <option value="مقروء" @if($topic->post_type == "مقروء") selected @endif>مقروء</option>
+                              <option value="مرئي" @if($topic->post_type == "مرئي") selected @endif>مرئي</option>
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                      <div class="form-group label-floating is-select">
+                          <label class="control-label">المدينة</label>
+                          <select class="selectpicker form-control" name="location" required>
+                              <option disabled selected value> -- اختر مدينة -- </option>
+                              <option value="24.774265,46.738586,الرياض" @if($topic->city == "الرياض") selected @endif>الرياض</option>
+                              <option value="21.2854,39.2376,جدة" @if($topic->city == "جدة") selected @endif>جدة</option>
+                              <option value="26.399250,49.984360,الدمام" @if($topic->city == "الدمام") selected @endif>الدمام</option>
+                              <option value="21.422510,39.826168,مكة" @if($topic->city == "مكة") selected @endif>مكة</option>
+                              <option value="21.437273,40.512714,الطائف" @if($topic->city == "الطائف") selected @endif>الطائف</option>
+                              <option value="24.186848,38.026428,ينبع" @if($topic->city == "ينبع") selected @endif>ينبع</option>
+                              <option value="26.094088,43.973454,عنيزة" @if($topic->city == "عنيزة") selected @endif>عنيزة</option>
+                              <option value="30.983334,41.016666,عرعر @if($topic->city == "عرعر") selected @endif">عرعر</option>
+                              <option value="28.446959,45.948944,حفر الباطن" @if($topic->city == "حفر الباطن") selected @endif>حفر الباطن</option>
+                              <option value="24.507143,44.408798,الدوادمى" @if($topic->city == "الدوادمى") selected @endif>الدوادمى</option>
 
+                          </select>
+                      </div>
+                  </div>
 
-                                              <div class="tabbable tabbable-tabdrop">
-                                                 <ul class="nav nav-tabs">
-                                                    <li class="active">
-                                                       <a href="#page_most_recent" data-toggle="tab" aria-expanded="true">Most Recent</a>
-                                                    </li>
-                                                    <li class="">
-                                                       <a href="#page_view_all" data-toggle="tab" aria-expanded="false">View All</a>
-                                                    </li>
-                                                    <li class="">
-                                                       <a href="#page_search" data-toggle="tab" aria-expanded="false">Search</a>
-                                                    </li>
-                                                 </ul>
-                                                 <div class="tab-content">
-                                                    <div class="tab-pane active" id="page_most_recent">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <div class="form-group label-floating">
+                          <label class="control-label">الموضوع</label>
+                          <textarea class="form-control" name="content" style="height: 240px">{{$topic->content}}</textarea>
+                      </div>
+                  </div>
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <div class="form-group label-floating"  >
+                          @if($topic->media_url != Null)
+                              <img src="{{asset('public').'/images/'.$topic->media_url}}" width="200px" >
+                          @else
+                              <p>لا يوجد صورة ملف</p>
+                          @endif
+                          <label class="control-label">الملف</label>
+                          <input type="file" name="file" class="form-control" >
+                      </div>
+                  </div>
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <div class="form-group label-floating">
+                          @if($topic->thumbnail != Null)
+                          <img src="{{asset('public').'/images/'.$topic->thumbnail}}" width="200px" >
+                          @else
+                              <p>لا يوجد صورة رمزية</p>
+                          @endif
+                          <label class="control-label">الصورة الرمزية</label>
+                          <input type="file" name="thumbnail" class="form-control" value="{{asset('public').'/images/'.$topic->thumbnail}}" >
+                      </div>
+                  </div>
 
-                                                        <div class="menu-content form-md-checkboxes">
-                                                           <div class="most_recent md-checkbox-list">
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox1" class="md-check">
-                                                                 <label for="checkbox1">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 1 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox2" class="md-check" checked="">
-                                                                 <label for="checkbox2">
-                                                                 <span></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 2 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox3" class="md-check">
-                                                                 <label for="checkbox3">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 3 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox4" class="md-check">
-                                                                 <label for="checkbox4">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 4 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox5" class="md-check">
-                                                                 <label for="checkbox5">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 5</label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox6" class="md-check">
-                                                                 <label for="checkbox6">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 6 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox7" class="md-check">
-                                                                 <label for="checkbox7">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 7 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox8" class="md-check">
-                                                                 <label for="checkbox8">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 8 </label>
-                                                              </div>
-                                                           </div>
-                                                        </div>
+                  <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                      <a href="{{ route('admin.topic.get') }}" class="btn btn-secondary btn-lg full-width">الرجوع</a>
+                  </div>
 
-                                                    </div>
-                                                    <div class="tab-pane" id="page_view_all">
-                                                       
-                                                        <div class="menu-content form-md-checkboxes">
-                                                           <div class="most_recent md-checkbox-list">
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox1" class="md-check">
-                                                                 <label for="checkbox1">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 1 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox2" class="md-check" checked="">
-                                                                 <label for="checkbox2">
-                                                                 <span></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 2 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox3" class="md-check">
-                                                                 <label for="checkbox3">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 3 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox4" class="md-check">
-                                                                 <label for="checkbox4">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 4 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox5" class="md-check">
-                                                                 <label for="checkbox5">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 5</label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox6" class="md-check">
-                                                                 <label for="checkbox6">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 6 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox7" class="md-check">
-                                                                 <label for="checkbox7">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 7 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox8" class="md-check">
-                                                                 <label for="checkbox8">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 8 </label>
-                                                              </div>
-                                                           </div>
-                                                        </div>
+                  <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                      <input  class="btn btn-blue btn-lg full-width"  value="عدل موضوع"  type="submit" >
+                  </div>
+              </div>
+          </form>
+         </div>
+      </div>
 
-                                                    </div>
-                                                    <div class="tab-pane" id="page_search">
-                                                       <input class="form-control spinner" type="text" placeholder="Search">
-                                                    </div>
+   </div>
 
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                          <a class="select-all">Select All</a>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                          <button type="button" class="btn default btn-sm pull-right">Add to menu</button>
-                                                        </div>
-                                                    </div>
-                                                 </div>
-                                              </div>
-
-
-                                           </div>
-                                        </div>
-                                     </div>
-                                     <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                           <h4 class="panel-title">
-                                              <a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion3" href="#posts" aria-expanded="false"> Posts </a>
-                                           </h4>
-                                        </div>
-                                        <div id="posts" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
-                                           <div class="panel-body">
-                                             
-
-                                              <div class="tabbable tabbable-tabdrop">
-                                                 <ul class="nav nav-tabs">
-                                                    <li class="active">
-                                                       <a href="#post_most_recent" data-toggle="tab" aria-expanded="true">Most Recent</a>
-                                                    </li>
-                                                    <li class="">
-                                                       <a href="#post_view_all" data-toggle="tab" aria-expanded="false">View All</a>
-                                                    </li>
-                                                    <li class="">
-                                                       <a href="#post_search" data-toggle="tab" aria-expanded="false">Search</a>
-                                                    </li>
-                                                 </ul>
-                                                 <div class="tab-content">
-                                                    <div class="tab-pane active" id="post_most_recent">
-
-                                                        <div class="menu-content form-md-checkboxes">
-                                                           <div class="most_recent md-checkbox-list">
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox1" class="md-check">
-                                                                 <label for="checkbox1">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 1 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox2" class="md-check" checked="">
-                                                                 <label for="checkbox2">
-                                                                 <span></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 2 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox3" class="md-check">
-                                                                 <label for="checkbox3">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 3 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox4" class="md-check">
-                                                                 <label for="checkbox4">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 4 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox5" class="md-check">
-                                                                 <label for="checkbox5">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 5</label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox6" class="md-check">
-                                                                 <label for="checkbox6">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 6 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox7" class="md-check">
-                                                                 <label for="checkbox7">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 7 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox8" class="md-check">
-                                                                 <label for="checkbox8">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 8 </label>
-                                                              </div>
-                                                           </div>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="tab-pane" id="post_view_all">
-                                                       
-                                                        <div class="menu-content form-md-checkboxes">
-                                                           <div class="most_recent md-checkbox-list">
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox1" class="md-check">
-                                                                 <label for="checkbox1">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 1 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox2" class="md-check" checked="">
-                                                                 <label for="checkbox2">
-                                                                 <span></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 2 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox3" class="md-check">
-                                                                 <label for="checkbox3">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 3 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox4" class="md-check">
-                                                                 <label for="checkbox4">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 4 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox5" class="md-check">
-                                                                 <label for="checkbox5">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 5</label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox6" class="md-check">
-                                                                 <label for="checkbox6">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 6 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox7" class="md-check">
-                                                                 <label for="checkbox7">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 7 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox8" class="md-check">
-                                                                 <label for="checkbox8">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 8 </label>
-                                                              </div>
-                                                           </div>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="tab-pane" id="post_search">
-                                                       <input class="form-control spinner" type="text" placeholder="Search">
-                                                    </div>
-
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                          <a class="select-all">Select All</a>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                          <button type="button" class="btn default btn-sm pull-right">Add to menu</button>
-                                                        </div>
-                                                    </div>
-                                                 </div>
-                                              </div>
-
-
-
-                                           </div>
-                                        </div>
-                                     </div>
-                                     <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                           <h4 class="panel-title">
-                                              <a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion3" href="#custom_links" aria-expanded="false"> Custom Links </a>
-                                           </h4>
-                                        </div>
-                                        <div id="custom_links" class="panel-collapse collapse" aria-expanded="false">
-                                           <div class="panel-body">
-                                                <div row="row">
-                                                    <div clas="col-md-4"><label class="control-label">URL</label></div>
-                                                    <div clas="col-md-8"><input type="text" class="form-control" placeholder="http://" value="http://"></div>
-                                                </div>
-                                                <div row="row">
-                                                    <div clas="col-md-4"><label class="control-label">Link Text</label></div>
-                                                    <div clas="col-md-8"><input type="text" class="form-control" placeholder="Menu Item"></div>
-                                                </div>
-                                           </div>
-                                        </div>
-                                     </div>
-                                     <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                           <h4 class="panel-title">
-                                              <a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion3" href="#categories" aria-expanded="false"> Categories </a>
-                                           </h4>
-                                        </div>
-                                        <div id="categories" class="panel-collapse collapse" aria-expanded="false">
-                                           <div class="panel-body">
-                                              
-
-                                              <div class="tabbable tabbable-tabdrop">
-                                                 <ul class="nav nav-tabs">
-                                                    <li class="active">
-                                                       <a href="#categories_most_recent" data-toggle="tab" aria-expanded="true">Most Recent</a>
-                                                    </li>
-                                                    <li class="">
-                                                       <a href="#categories_view_all" data-toggle="tab" aria-expanded="false">View All</a>
-                                                    </li>
-                                                    <li class="">
-                                                       <a href="#categories_search" data-toggle="tab" aria-expanded="false">Search</a>
-                                                    </li>
-                                                 </ul>
-                                                 <div class="tab-content">
-                                                    <div class="tab-pane active" id="categories_most_recent">
-
-                                                        <div class="menu-content form-md-checkboxes">
-                                                           <div class="most_recent md-checkbox-list">
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox1" class="md-check">
-                                                                 <label for="checkbox1">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 1 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox2" class="md-check" checked="">
-                                                                 <label for="checkbox2">
-                                                                 <span></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 2 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox3" class="md-check">
-                                                                 <label for="checkbox3">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 3 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox4" class="md-check">
-                                                                 <label for="checkbox4">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 4 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox5" class="md-check">
-                                                                 <label for="checkbox5">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 5</label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox6" class="md-check">
-                                                                 <label for="checkbox6">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 6 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox7" class="md-check">
-                                                                 <label for="checkbox7">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 7 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox8" class="md-check">
-                                                                 <label for="checkbox8">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 8 </label>
-                                                              </div>
-                                                           </div>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="tab-pane" id="categories_view_all">
-                                                       
-                                                        <div class="menu-content form-md-checkboxes">
-                                                           <div class="most_recent md-checkbox-list">
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox1" class="md-check">
-                                                                 <label for="checkbox1">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 1 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox2" class="md-check" checked="">
-                                                                 <label for="checkbox2">
-                                                                 <span></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 2 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox3" class="md-check">
-                                                                 <label for="checkbox3">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 3 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox4" class="md-check">
-                                                                 <label for="checkbox4">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 4 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox5" class="md-check">
-                                                                 <label for="checkbox5">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 5</label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox6" class="md-check">
-                                                                 <label for="checkbox6">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 6 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox7" class="md-check">
-                                                                 <label for="checkbox7">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 7 </label>
-                                                              </div>
-                                                              <div class="md-checkbox">
-                                                                 <input type="checkbox" id="checkbox8" class="md-check">
-                                                                 <label for="checkbox8">
-                                                                 <span class="inc"></span>
-                                                                 <span class="check"></span>
-                                                                 <span class="box"></span> Option 8 </label>
-                                                              </div>
-                                                           </div>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="tab-pane" id="categories_search">
-                                                       <input class="form-control spinner" type="text" placeholder="Search">
-                                                    </div>
-
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                          <a class="select-all">Select All</a>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                          <button type="button" class="btn default btn-sm pull-right">Add to menu</button>
-                                                        </div>
-                                                    </div>
-                                                 </div>
-                                              </div>
-
-                                           </div>
-                                        </div>
-                                     </div>
-                                  </div>
-                               </div>
-
-
-
-
-                            </div>
-                            <div class="col-md-8">
-
-                                <div class="portlet box ">
-                                   <div class="portlet-title">
-                                      <div class="row">
-                                         <div class="col-md-4">
-                                            <input type="text" class="form-control" placeholder="Enter Menu Name Here">
-                                         </div>
-                                         <div class="col-md-8">
-                                            <div class="btn-group pull-right">
-                                               <button class="btn blue">Save Menu
-                                               </button>
-                                            </div>
-                                         </div>
-                                      </div>
-                                   </div>
-                                   <div class="portlet-body">
-                                      <h4>Menu Structure</h4>
-                                      Drag each item into the order you prefer. Click the arrow on the right of the item to reveal additional configuration options.
-                                       <div class="dd" id="nestable_list_1">
-                                        <ol class="dd-list">
-                                            <li class="dd-item" data-id="1">
-                                                <div class="dd-handle"> Item 1 </div>
-                                            </li>
-                                            <li class="dd-item" data-id="2">
-                                                <div class="dd-handle"> Item 2 </div>
-                                                <ol class="dd-list">
-                                                    <li class="dd-item" data-id="3">
-                                                        <div class="dd-handle"> Item 3 </div>
-                                                    </li>
-                                                    <li class="dd-item" data-id="4">
-                                                        <div class="dd-handle"> Item 4 </div>
-                                                    </li>
-                                                    <li class="dd-item" data-id="5">
-                                                        <div class="dd-handle"> Item 5 </div>
-                                                        <ol class="dd-list">
-                                                            <li class="dd-item" data-id="6">
-                                                                <div class="dd-handle"> Item 6 </div>
-                                                            </li>
-                                                            <li class="dd-item" data-id="7">
-                                                                <div class="dd-handle"> Item 7 </div>
-                                                            </li>
-                                                            <li class="dd-item" data-id="8">
-                                                                <div class="dd-handle"> Item 8 </div>
-                                                            </li>
-                                                        </ol>
-                                                    </li>
-                                                    <li class="dd-item" data-id="9">
-                                                        <div class="dd-handle"> Item 9 </div>
-                                                    </li>
-                                                    <li class="dd-item" data-id="10">
-                                                        <div class="dd-handle"> Item 10 </div>
-                                                    </li>
-                                                </ol>
-                                            </li>
-                                            <li class="dd-item" data-id="11">
-                                                <div class="dd-handle"> Item 11 </div>
-                                            </li>
-                                            <li class="dd-item" data-id="12">
-                                                <div class="dd-handle"> Item 12 </div>
-                                            </li>
-                                        </ol>
-                                    </div>
-
-
-                                   </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </form>
-                    <!-- END PAGE BASE CONTENT -->
-                </div>
-            </div>
-                   
 @stop
+
 @section('scripts')
-<script src="{{ asset('public/assets/admin/global/plugins/jquery-nestable/jquery.nestable.js') }}" type="text/javascript"></script>
-<script src="{{ asset('public/assets/admin/pages/scripts/ui-nestable.js') }}" type="text/javascript"></script>
+   <script src="{{ asset('public/assets/admin/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js') }}"
+           type="text/javascript"></script>
+   <script src="{{ asset('public/assets/admin/global/plugins/ckeditor/ckeditor.js') }}"
+           type="text/javascript"></script>
+   <script src="{{ asset('public/assets/admin/global/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js') }}"
+           type="text/javascript"></script>
 @stop

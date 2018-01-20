@@ -30,16 +30,28 @@
                         <?php
                             $post_types_sidebar = [
                                     ['type' => 'slider', 'icon' => 'fa-image'],
-                                   
                                     ['type' => 'home', 'icon' => 'fa fa-home '],
                                     ['type' => 'page', 'icon' => 'fa fa-home '],
-                                    ['type' => 'certificate', 'icon' => 'fa fa-home '],
-                                    ['type' => 'product', 'icon' => 'fa fa-home '],
 
                                   
                             ];
                         ?>
+                        <li class="nav-item  start   ">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="fa fa-envelope-o"></i>
+                                <span class="title">Topics</span>
+                                <span class="arrow "></span>
+                            </a>
+                            <ul class="sub-menu">
+                                <li class="nav-item  ">
+                                    <a href="{{ route('admin.topic.get') }}" class="nav-link ">
+                                        <span class="title">All Topics</span>
+                                    </a>
+                                </li>
 
+
+                            </ul>
+                        </li>
                         @foreach($post_types_sidebar as $post_type)
                         <li class="nav-item  @if(\Request::get('post_type') == $post_type['type']) start active open @endif">
                             <a href="javascript:;" class="nav-link nav-toggle">

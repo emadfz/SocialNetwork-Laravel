@@ -67,7 +67,7 @@ class PostController extends Controller
     }
     public function getMap()
     {
-        $topics =  Topic::get();
+        $topics =  Topic::where('status', '1')->get();
         return view('sections.map',['topics' => $topics]);
     }
     public function singlePost($id)

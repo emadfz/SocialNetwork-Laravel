@@ -28,11 +28,20 @@ Route::group(['middleware' => 'web', 'prefix' => 'admin', 'namespace' => 'Module
 			Route::get('/trash',				[ 'as' => 'admin.posts.trash.get', 				'uses' => 'PostController@getPostsTrash'				]);
 			Route::get( '/data',				[ 'as' => 'admin.posts.data.get' , 				'uses' => 'PostController@getPostsData' 				]);
 		});
+        Route::group(['prefix' => 'topics'], function() {
+            Route::get( '/',					[ 'as' => 'admin.topic.get', 					'uses' => 'TopicController@index'  	  				]);
+            Route::get( '/activate/{id}',					[ 'as' => 'admin.topic-activate.get', 					'uses' => 'TopicController@activate'  ]);
+            Route::get( '/deactivate/{id}',					[ 'as' => 'admin.topic-deactivate.get', 					'uses' => 'TopicController@deactivate'   	]);
+            Route::get( '/delete/{id}',					[ 'as' => 'admin.topic-delete.get', 					'uses' => 'TopicController@delete']);
+            Route::get( '/edit/{id}',					[ 'as' => 'admin.topic-edit.get', 					'uses' => 'TopicController@getEdit']);
+            Route::post( '/edit',					[ 'as' => 'admin.topic-edit.post', 					'uses' => 'TopicController@postEdit']);
+
+        });
 
 
-		/*
-		* Users
-		*/
+        /*
+        * Users
+        */
 		Route::group(['prefix' => 'users'], function() {
 			Route::get( '/',					[ 'as' => 'admin.users.get', 					'uses' => 'UserController@getUsers'    					]);
 			Route::get( '/add-new',				[ 'as' => 'admin.users.add.get', 				'uses' => 'UserController@getAddUser'   				]);

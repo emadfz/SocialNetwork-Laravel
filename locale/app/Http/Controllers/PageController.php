@@ -27,14 +27,14 @@ namespace App\Http\Controllers;
         */
         public function getHome()
         {
-            $topics = Topic::orderBy('created_at', 'desc')->limit(3)->with('user')->get();
+            $topics = Topic::where('status', '1')->orderBy('created_at', 'desc')->limit(3)->with('user')->get();
             
             
             return view('sections.home')->with('topics',$topics);
         }
         public function getHome2()
         {
-            $topics = Topic::with('user')->paginate(9);
+            $topics = Topic::where('status', '1')->with('user')->paginate(9);
             
             return view('sections.home2')->with('topics',$topics);
         }
@@ -63,7 +63,7 @@ namespace App\Http\Controllers;
                 $query = $query->where('user_id', $user->id);
             }
 
-
+            $query= $query->where('status', '1');
             $topics = $query->paginate(9);
             return view('sections.home2')->with('topics',$topics);
         }
