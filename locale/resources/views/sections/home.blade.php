@@ -286,8 +286,8 @@
       </div>
     @endif
       <div class="post-content">
-        <a href="#" class="post-category bg-blue-light">{{$topic->title}}</a>
-        <a href="#" class="h4 post-title">{{ $topic->content }}
+        <a href="#" class="post-category bg-blue-light">{{$topic->value}}</a>
+        <a href="{{route('frontend.post.get', ['id' => $topic->id])}}" class="h4 post-title">{{ $topic->title }}
         <div class="author-date">
         بواسطة
           <a class="h6 post__author-name fn" href="#">{{$topic->user->username}}</a>

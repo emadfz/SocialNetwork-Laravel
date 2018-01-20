@@ -5,9 +5,12 @@
         Route::get( '/logout',	  [ 'as' => 'frontend.logout.get',  'uses' => 'UserController@getLogout']);
         Route::get( '/add-post'   , [ 'as' => 'frontend.addpost.get'   , 'uses' => 'PostController@addPost'   ]);
         Route::post( '/add-post'   , [ 'as' => 'frontend.addpost.post'   , 'uses' => 'PostController@create']);
+        Route::post( '/add-comment'   , [ 'as' => 'frontend.addcomment.post'   , 'uses' => 'CommentController@addComment'   ]);
+
 
     });
 Route::get( '/home'   , [ 'as' => 'frontend.home2.get'   , 'uses' => 'PageController@getHome2'   ]);
+Route::get( '/post/{id}'   , [ 'as' => 'frontend.post.get'   , 'uses' => 'PostController@singlePost'   ]);
 Route::get( '/search'   , [ 'as' => 'frontend.search.get'   , 'uses' => 'PageController@search'   ]);
 Route::get( '/map'   , [ 'as' => 'frontend.map.get'   , 'uses' => 'PostController@getMap'   ]);
 

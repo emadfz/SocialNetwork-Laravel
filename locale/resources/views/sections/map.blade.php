@@ -177,7 +177,7 @@
 					</div>
 				
 					<div class="content">
-						<a href="#" class="title h5">{{$topic->title}}</a>
+						<a href="{{route('frontend.post.get', ['id' => $topic->id])}}" class="title h5">{{$topic->title}}</a>
 						<span class="sub-title">{{$topic->created_at}}</span>
 					</div>
 				

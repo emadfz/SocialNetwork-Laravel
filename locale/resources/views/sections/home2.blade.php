@@ -83,34 +83,29 @@
 					
 				
 						@if($topic->media_type == "jpg")
-						<div class="post-thumb">
-							<img src=" {{asset('public').'/images/'.$topic->media_url}}" alt="photo">
+						<div class="post-thumb" style="background-image:url({{asset('public').'/images/'.$topic->media_url}} )">
+
 						</div>
 						@elseif($topic->thumbnail != Null)
-							<div class="post-thumb">
-								<img src=" {{asset('public').'/images/'.$topic->thumbnail}}" alt="photo">
+							<div class="post-thumb" style="background-image:url({{asset('public').'/images/'.$topic->thumbnail}} )">
 							</div>
-
 						@elseif($topic->post_type == "مقروء")
-						
-						<div class="post-thumb">
-						<img src="{{asset('public')}}/img/Content.png" alt="photo">
-						</div>
+							<div class="post-thumb" style="background-image:url({{asset('public')."/img/Content.png "}})">
+							</div>
+
 						@elseif($topic->post_type == "مسموع")
-
-							<div class="post-thumb">
-								<img src="{{asset('public')}}/img/Volume.png" alt="photo">
+							<div class="post-thumb" style="background-image:url({{asset('public')."/img/Volume.png "}})">
 							</div>
+
 						@else
-
-							<div class="post-thumb">
-								<img src="{{asset('public')}}/img/Media.png" alt="photo">
+							<div class="post-thumb" style="background-image:url({{asset('public')."/img/Media.png "}})">
 							</div>
+							 
 						@endif
 					
 						<div class="post-content">
 							<a href="#" class="post-category bg-blue-light">{{$topic->value}}</a>
-							<a href="#" class="h4 post-title"> {{$topic->title}}</a>
+							<a href="{{route('frontend.post.get', ['id' => $topic->id])}}" class="h4 post-title"> {{$topic->title}}</a>
 							<p>ما فائدته ؟ هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طري.</p>
 					
 							<div class="author-date">

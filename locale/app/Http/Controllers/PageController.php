@@ -34,10 +34,6 @@ namespace App\Http\Controllers;
         }
         public function getHome2()
         {
-            if(\Auth::guest())
-            {
-                return view('sections.home');
-            }
             $topics = Topic::with('user')->paginate(9);
             
             return view('sections.home2')->with('topics',$topics);

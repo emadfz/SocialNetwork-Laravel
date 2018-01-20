@@ -236,9 +236,78 @@ input[type="submit"] {
 }
 .blog-post .post-thumb{
 	background-size: cover;
+	background-position:center center;
     width: 100%;
     display: block;
     height: 280px;
+}
+.single-post .more {
+float: left;}
+.single-post .post-thumb {
+    Max-height: none !important;
+    clear: both !important;
+    height: auto;
+    width: auto;
+	margin: 0 -40px 50px;}
+.single-post .control-block-button{
+	right: auto;
+	left: -17px;
+}
+.single-post .post-title {
+font-size: 30px;
+margin-bottom: 25px;
+}
+.single-post .post-category {
+    float: right;
+}
+.single-post-v2 {
+    padding: 40px;
+}
+.more-dropdown{
+	left: none;
+	right:0;
+}
+blockquote p:before{
+	left: none;
+	right:-80px;
+}
+.author-date .author-thumb{
+	margin-right:inherit;
+	margin-left: 13px;
+}
+.single-post-additional {
+    margin-bottom: inherit;
+}
+.post__author img{
+	margin-right: inherit;
+	margin-left: 12px;
+}
+.post-additional-info {
+padding: 20px;}
+.post-additional-info .comments-shared {
+float: left;}
+.form-group.with-icon-right .form-control, .form-group.with-icon-right input, .form-group.with-icon-right textarea {
+    padding-right: 20px;
+	padding-left: 60px;
+}
+#home .remember {
+    margin: 5px 0 45px;
+}
+.btn.btn-social .fa:before {
+    vertical-align: -webkit-baseline-middle;
+}
+.btn.btn-social{
+    cursor: pointer;
+}
+.registration-login-form .title{
+	border-bottom: none;
+}
+.body-bg-gray {
+    background-color: #e6e6e6;
+    padding-top: 120px;
+}
+.btn.btn-social {
+    width: -webkit-fill-available;
 }
 /* Responive Header */
 
@@ -583,4 +652,18 @@ content:'\f0d5';
     width: 60%;
     padding-top: 175px;
     margin: 0 auto;
+}
+/*   Sign Up Page    */
+
+.margin-top {
+    color: #fff;
+    margin-top: 20px;
+}
+
+.no-hght {
+    min-height: auto;
+}
+.top-border2 {
+    border-top: 1px solid #e6ecf5;
+    padding-top: 40px;
 }

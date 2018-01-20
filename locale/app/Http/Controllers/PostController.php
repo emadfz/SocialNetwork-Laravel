@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Topic;
 use App\User;
+use App\Comment;
 
 use App\Http\Requests;
 
@@ -68,5 +69,19 @@ class PostController extends Controller
     {
         $topics =  Topic::get();
         return view('sections.map',['topics' => $topics]);
+    }
+    public function singlePost($id)
+    {
+        $comments_id =[];
+        $topic =  Topic::where('id',$id)->with('user')->with("comments")->first();
+
+        foreach($topic->comments as $comment)
+        {
+            $comments_id[] = $comment->id;
+        }
+        $comments =Comment::whereIn('id', $comments_id)->with("user")->get();
+
+            return view('sections.post',compact('topic', 'comments'));
+
     }
 }
